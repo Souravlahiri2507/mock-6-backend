@@ -5,6 +5,7 @@ const cors = require("cors");
 const { userRouter } = require("./routes/userRoutes");
 
 const { auth } = require("./middleware/auth");
+const { blogRouter } = require("./routes/blogRoutes");
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,8 @@ app.get("/", (req, res) => {
 app.use("/users", userRouter); //get
 
 app.use(auth); //middleware
+
+app.use("/blogs", blogRouter);
 
 
 app.listen(process.env.PORT, async () => {
